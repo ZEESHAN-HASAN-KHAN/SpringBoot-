@@ -1,0 +1,14 @@
+<div class="edit-blog-form">
+    <h2>Edit Blog</h2>
+    <form (submit)="updateBlog(newBlog)">
+      <div class="form-group">
+        <label for="blogTitle">Title</label>
+        <input type="text" id="blogTitle" name="blogTitle" [(ngModel)]="newBlog.blogTitle" required>
+      </div>
+      <div class="form-group">
+        <label for="blogContent">Content</label>
+        <textarea id="blogContent" name="blogContent" [(ngModel)]="newBlog.blogContent" required></textarea>
+      </div>
+      <button type="submit">Update Blog</button>
+    </form>
+  </div>

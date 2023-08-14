@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-nav-list style="width: 200px;">
+      <a mat-menu-item routerLink="login"><mat-icon>login</mat-icon>Login</a>
+      <a mat-menu-item routerLink="register"><mat-icon>touch_app</mat-icon>Register</a>
+      
+      <button mat-menu-item [matMenuTriggerFor]="moviesMenu">
+        <mat-icon>movie</mat-icon>Movies
+      </button>
+      <mat-menu #moviesMenu="matMenu">
+        <a mat-menu-item routerLink="movies">View Movies</a>
+        <a mat-menu-item routerLink="add-movie">Add Movie</a>
+      </mat-menu>
+      
+      <button mat-menu-item [matMenuTriggerFor]="newsMenu">
+        <mat-icon>newspaper</mat-icon>News
+      </button>
+      <mat-menu #newsMenu="matMenu">
+        <a mat-menu-item routerLink="home">View News</a>
+        <a mat-menu-item routerLink="add-news">Add News</a> 
+      </mat-menu>
+      <button mat-menu-item [matMenuTriggerFor]="blogsMenu">
+        <mat-icon>view_array</mat-icon>Blogs
+      </button>
+      <mat-menu #blogsMenu="matMenu">
+        <a mat-menu-item routerLink="blogs">View Blogs</a>
+        <a mat-menu-item routerLink="add-blog">Add Blogs</a>  
+      </mat-menu>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="white" style="border-bottom: 2px solid black;">
+      <span>My Service Application</span>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="goHome()">
+        <mat-icon>home</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

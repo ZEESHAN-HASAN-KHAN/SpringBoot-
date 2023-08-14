@@ -1,0 +1,130 @@
+version: "3.3"
+services:
+  mysqlservice:
+    image: mysql:5.7
+    ports:
+      - 3307:3306
+    container_name: mysql-container
+    networks:
+      - springcloud-movie-net
+    environment:
+      MYSQL_DATABASE: authenticate_db
+      MYSQL_ROOT_PASSWORD: 9818101977
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  mongodbservice:
+    image: mongo:latest
+    container_name: mongo-container
+    networks:
+      - springcloud-movie-net
+    ports:
+      - 27017:27017
+
+  userauthenticationservice:
+    container_name: user-authentication-service
+    build: UserAuthenticationService/
+    networks:
+      - springcloud-movie-net
+    ports:
+      - 8085:8085
+    volumes:
+      - ./logs:/usr/src/logs
+    depends_on:
+      - mysqlservice
+      - eurekaServer
+      - cloudapiservice
+    restart: always
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq-container
+
+  newsservice:
+    container_name: news-service
+    build: NewsService/
+    volumes:
+      - ./logs:/usr/src/logs
+    networks:
+      - springcloud-movie-net
+    ports:
+      - "8086:8086"
+    depends_on:
+      - mongodbservice
+      - cloudapiservice
+      - eurekaServer
+    restart: always
+
+  blogservice:
+    container_name: blog-service
+    build: BlogService/
+    volumes:
+      - ./logs:/usr/src/logs
+    networks:
+      - springcloud-movie-net
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysqlservice
+      - cloudapiservice
+      - eurekaServer
+    restart: always
+
+
+  usermovieservice:
+    container_name: user-movie-service
+    build: UserMovieService/
+    networks:
+      - springcloud-movie-net
+    volumes:
+      - ./logs:/usr/src/logs
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodbservice
+      - eurekaServer
+      - cloudapiservice
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq-container
+    restart: always
+
+  cloudapiservice:
+    image: cloud-api-service
+    build: SpringCloudAPIGateway/
+    restart: always
+    networks:
+      - springcloud-movie-net
+    ports:
+      - 9000:9000
+    environment:
+      API_GATEWAY_PORT: 9000
+      EUREKA_SERVER_IP: eurekaserver
+      EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eurekaServer
+
+  eurekaServer:
+    image: eureka-service
+    build: EurekaServer/
+    restart: always
+    networks:
+      - springcloud-movie-net
+    ports:
+      - 8761:8761
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq-container
+    ports:
+      - "5671:5672"
+      - "15671:15672"
+    networks:
+      - springcloud-movie-net
+    restart: always
+
+networks:
+  springcloud-movie-net:
+    driver: bridge
+
+
+
+

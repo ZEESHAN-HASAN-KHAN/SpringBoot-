@@ -1,0 +1,14 @@
+<div class="add-blog-form">
+    <h2>Add New Blog</h2>
+    <form (submit)="submitBlog()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newBlog.blogTitle" required>
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea id="content" name="content" [(ngModel)]="newBlog.blogContent" required></textarea>
+      </div>
+      <button type="submit">Add Blog</button>
+    </form>
+  </div>

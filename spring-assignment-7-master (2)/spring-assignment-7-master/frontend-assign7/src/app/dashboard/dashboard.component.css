@@ -1,0 +1,65 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-nav-list a.mat-list-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 16px;
+    width: 100%; 
+  }
+
+.mat-list-item mat-icon {
+  margin-right: 8px;
+  color: #333;
+}
+
+.mat-menu-trigger {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mat-menu-content {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-menu-item {
+  font-size: 14px;
+  color: #555;
+}
+
+.mat-menu-item:hover {
+  background-color: #ddd;
+}
+
+.mat-toolbar {
+  background-color: primary;
+  color: black;
+}
+
+.example-icon {
+  color: black;
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.mat-sidenav-content {
+  padding: 0;
+}
+
+mat-icon[aria-label="Side nav toggle icon"] {
+  font-size: 24px;
+  color: black;
+}
+.mat-sidenav {
+  width: 200px; 
+}
+

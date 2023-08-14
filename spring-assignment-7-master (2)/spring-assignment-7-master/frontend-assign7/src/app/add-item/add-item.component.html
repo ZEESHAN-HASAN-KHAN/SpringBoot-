@@ -1,0 +1,35 @@
+<div class="movie-form-container">
+    <mat-card class="movie-form-card">
+      <mat-card-header>
+        <mat-card-title>Movie Form</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="formField">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter Movie name" [(ngModel)]="movies.movieName" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">    
+          <input matInput placeholder="Enter Genre" [(ngModel)]="movies.genre" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Enter Lead Actors" [(ngModel)]="actors" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">    
+          <input matInput placeholder="Enter Director Name" [(ngModel)]="movies.director" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">    
+          <input matInput placeholder="Enter Year of Release" [(ngModel)]="movies.yearOfRelease" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">    
+          <input matInput placeholder="Enter Rating" [(ngModel)]="movies.rating" required>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Add Movie</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

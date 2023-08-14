@@ -1,0 +1,37 @@
+.example-card {
+    padding-top: 2rem;
+    min-width: 20rem;
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .example-header-image {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/666/666201.png');
+    background-size: cover;
+  }
+  .homepage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  .loginField{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .formHeader{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .formPlaceHolder{
+
+        margin: 1rem;
+    }
+    .registerForm{
+        padding: 2rem;
+        font-size: small;
+    }

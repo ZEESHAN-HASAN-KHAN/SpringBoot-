@@ -1,0 +1,25 @@
+.example-card {
+    padding-top: 2rem;
+    min-width: 20rem;
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homepage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  .loginField{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .formPlaceHolder{
+        width: 10rem;
+        height: 2rem;
+        margin: 1rem;
+    }
